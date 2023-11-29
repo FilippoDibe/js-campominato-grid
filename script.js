@@ -40,7 +40,7 @@ function generaGriglia() {
         quadrato.className = "square";
         quadrato.textContent = i;
         container.appendChild(quadrato);
-
+        // funzione per il click dei quadrati che stampa in console
         quadrato.addEventListener("click", function() {
             this.style.backgroundColor = "lightblue";
             console.log("Cella cliccata: " + this.textContent);
