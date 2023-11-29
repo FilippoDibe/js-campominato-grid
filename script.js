@@ -23,13 +23,32 @@ function generaGriglia() {
     } else if (modalita === "difficile") {
         numeroMassimo = 49;
     }
-
+    // determina il numero di caselle 
+    let casellePerRiga;
+    if (modalita === "facile") {
+        casellePerRiga = 10;
+    } else if (modalita === "medio") {
+        casellePerRiga = 9;
+    } else if (modalita === "difficile") {
+        casellePerRiga = 7;
+    }
+    // calcolo il numero di righe 
+    let nRighe=Math.ceil(numeroMassimo / casellePerRiga);
     // Genera quadratini con numeri da 1 al numero massimo
     for (var i = 1; i <= numeroMassimo; i++) {
         var quadrato = document.createElement("div");
         quadrato.className = "square";
         quadrato.textContent = i;
         container.appendChild(quadrato);
+
+        quadrato.addEventListener("click", function() {
+            this.style.backgroundColor = "lightblue";
+            console.log("Cella cliccata: " + this.textContent);
+        });
+
+        if (i % casellePerRiga === 0) {
+            container.appendChild(document.createElement("br"));
+        }
     }
 
     // Mostra il container
